@@ -1,12 +1,13 @@
 import sys
 import math
+from functools import reduce
 from itertools import islice
 
 file_path = './data/popular-names.txt'
 
 def get_file_length(file_path):
     with open(file_path, mode = 'r') as f:
-        return len(f.readlines())
+        return reduce(lambda num_lines, x: num_lines + 1, f, 0)
 
 n = int(sys.argv[1])
 with open(file_path, mode = 'r') as f:
